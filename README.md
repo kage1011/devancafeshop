@@ -1,28 +1,31 @@
 # devancafeshop
 app for my cafe shop in the future
-                    ┌──────────────────────┐
-                    │      Mobile App      │
-                    │   React Native + TS  │
-                    └──────────┬───────────┘
-                               │
-                      REST API / WebSocket
-                               │
-              ┌────────────────▼────────────────┐
-              │           Backend API           │
-              │       Node.js + NestJS          │
-              │                                 │
-              │ Auth │ Menu │ Order │ Employee  │
-              │ User │ Table│ Notify│ Report    │
-              └───────────────┬─────────────────┘
-                              │
-                    ┌─────────▼─────────┐
-                    │     Database      │
-                    │    PostgreSQL     │
-                    └───────────────────┘
-                              │
-               ┌──────────────┴──────────────┐
-               │                             │
-        ┌──────▼──────┐              ┌──────▼──────┐
-        │ Redis       │              │ Firebase    │
-        │ Cache/Queue │              │ FCM Push    │
-        └─────────────┘              └─────────────┘
+
+                    FRONTEND
+          ┌────────────────────────┐
+          │ React Native / React   │
+          └────────────┬───────────┘
+                       │
+                 REST / WebSocket
+                       │
+                       ▼
+              ┌─────────────────┐
+              │    API SERVER   │
+              │ Node + Express  │
+              └────────┬────────┘
+                       │
+        ┌──────────────┼───────────────┐
+        │              │               │
+        ▼              ▼               ▼
+     Auth          Business         Realtime
+     JWT           Services         Socket.IO
+        │              │
+        └──────────────┼───────────────┘
+                       ▼
+                  ┌──────────┐
+                  │ MongoDB  │
+                  └──────────┘
+                       │
+          ┌────────────┼────────────┐
+          ▼            ▼            ▼
+       Orders       Inventory     Reports
