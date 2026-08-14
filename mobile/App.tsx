@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./src/i18n";
 import {
   NavigationContainer
 } from "@react-navigation/native";
