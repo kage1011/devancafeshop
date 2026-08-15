@@ -10,7 +10,8 @@ import tableRoutes from "./table.routes";
 export const router = Router();
 
 router.use("/auth", authRoutes);
-router.use("/products", productRoutes);
-router.use("/orders", orderRoutes);
 router.use("/categories", categoryRoutes);
+router.use("/products", productRoutes);
 router.use("/tables", tableRoutes);
+router.use("/orders", orderRoutes);
+
