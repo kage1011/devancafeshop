@@ -8,8 +8,17 @@ import {
 } from "react-native";
 
 import { colors } from "../../theme/theme";
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function HomeScreen() {
+
+
+  const navigation = useNavigation();
+
+  const handleOrderPress = () => {
+    navigation.navigate('Order' as never);
+  };
 
   return (
 
@@ -47,7 +56,7 @@ export default function HomeScreen() {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
+        <TouchableOpacity onPress={handleOrderPress}
           style={styles.card}
         >
           <Text style={styles.icon}>

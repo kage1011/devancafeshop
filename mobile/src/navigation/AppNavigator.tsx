@@ -7,6 +7,7 @@ import {
 import SplashScreen from "../screens/Splash/SplashScreen";
 import AuthNavigator from "./AuthNavigator";
 import HomeScreen from "../screens/Home/HomeScreen";
+import OrderScreen from "../screens/Order/OrderScreen";
 
 const Stack =
   createNativeStackNavigator();
@@ -35,6 +36,13 @@ export default function AppNavigator() {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
+      />
+      <Stack.Screen
+        name="Order"
+        component={OrderScreen}
+        options={{
+          headerShown: false,
+        }}
       />
 
     </Stack.Navigator>
