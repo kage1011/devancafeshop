@@ -5,12 +5,13 @@ import { useAuth } from '../context/AuthContext';
 import AuthNavigator from './AuthNavigator';
 import AdminNavigator from './AdminNavigator'; // admin
 import CustomerNavigator from './CustomerNavigator'; // khách hàng
+import SplashScreen from '../screens//Splash/SplashScreen'; //splash loading
 
 const RootNavigator = () => {
   const { user, isAuthenticated, isLoading } = useAuth();
 
   if (isLoading) {
-    return null;
+    return <SplashScreen />;
   }
 
   if (!isAuthenticated) { // nếu chưa có đăng nhập --> phải đăng nhập

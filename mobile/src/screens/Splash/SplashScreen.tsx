@@ -12,17 +12,15 @@ interface Props {
   navigation: any;
 }
 
-export default function SplashScreen({
-  navigation
-}: Props) {
+export default function SplashScreen() {
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      navigation.replace("Auth");
-    }, 2000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     navigation.replace("Auth");
+  //   }, 2000);
 
-    return () => clearTimeout(timer);
-  }, [navigation]);
+  //   return () => clearTimeout(timer);
+  // }, [navigation]);
 
   return (
     <View style={styles.container}>
