@@ -1,6 +1,7 @@
 import mongoose, { Document, Schema } from "mongoose";
 
 export interface ICategory extends Document {
+  categoryId: mongoose.Types.ObjectId;
   name: string;
   description?: string;
   image?: string;
@@ -11,6 +12,11 @@ export interface ICategory extends Document {
 
 const CategorySchema = new Schema<ICategory>(
   {
+    categoryId: {
+      type: Schema.Types.ObjectId,
+      ref: "Category",
+      required: true,
+    },
     name: {
       type: String,
       required: true,

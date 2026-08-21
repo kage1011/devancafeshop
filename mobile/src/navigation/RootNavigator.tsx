@@ -9,7 +9,7 @@ import SplashScreen from '../screens//Splash/SplashScreen'; //splash loading
 
 const RootNavigator = () => {
   const { user, isAuthenticated, isLoading } = useAuth();
-
+  console.log('RootNavigator - user:', user, 'isAuthenticated:', isAuthenticated, 'isLoading:', isLoading);
   if (isLoading) {
     return <SplashScreen />;
   }

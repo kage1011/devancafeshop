@@ -28,10 +28,8 @@ export default function LoginScreen({ navigation }: Props) {
   const handleLogin = async () => {
     if (!username || !password) {
       Alert.alert('Thông báo', 'Vui lòng nhập username và password');
-
       return;
     }
-
     try {
       setLoading(true);
       await login(username, password);

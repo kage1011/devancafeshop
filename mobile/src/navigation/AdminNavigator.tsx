@@ -3,8 +3,8 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import AdminHomeScreen from '../screens/Admin/AdminHomeScreen';
-// import ProductScreen from '../screens/admin/ProductScreen';
-// import CategoryScreen from '../screens/admin/CategoryScreen';
+import AdminProductScreen from '../screens/Admin/ProductScreen';
+import AdminCategoryScreen from '../screens/Admin/CategoryScreen';
 // import TableScreen from '../screens/admin/TableScreen';
 // import OrderScreen from '../screens/admin/OrderScreen';
 // import UserScreen from '../screens/admin/UserScreen';
@@ -12,18 +12,12 @@ import AdminHomeScreen from '../screens/Admin/AdminHomeScreen';
 
 export type AdminStackParamList = {
   AdminHome: undefined;
-
-  Products: undefined;
-
-  Categories: undefined;
-
-  Tables: undefined;
-
-  Orders: undefined;
-
-  Users: undefined;
-
-  Banners: undefined;
+  AdminProduct: undefined;
+  AdminCategories: undefined;
+  AdminTables: undefined;
+  AdminOrders: undefined;
+  AdminUsers: undefined;
+  AdminBanners: undefined;
 };
 
 const Stack = createNativeStackNavigator<AdminStackParamList>();
@@ -44,13 +38,20 @@ const AdminNavigator = () => {
         }}
       />
 
-      {/* <Stack.Screen
-        name="Products"
-        component={ProductScreen}
+      <Stack.Screen
+        name="AdminProduct"
+        component={AdminProductScreen}
         options={{
           title: 'Quản lý sản phẩm',
         }}
-      /> */}
+      />
+      <Stack.Screen
+        name="AdminCategories"
+        component={AdminCategoryScreen}
+        options={{
+          title: 'Quản lý nhóm sản phẩm',
+        }}
+      />
 
       {/* <Stack.Screen
         name="Categories"

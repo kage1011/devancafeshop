@@ -32,7 +32,7 @@ export default function AdminHomeScreen({ navigation }: Props) {
     navigation.navigate('AdminTable' as never);
   };
   const handleGroupProductPress = () => {
-    navigation.navigate('AdminGroupProduct' as never);
+    navigation.navigate('AdminCategories' as never);
   };
   const handleReportPress = () => {
     navigation.navigate('AdminReport' as never);
