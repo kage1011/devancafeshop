@@ -14,12 +14,7 @@ import {
 export async function createCategoryController(req: Request, res: Response) {
   try {
     const category = await createCategory(req.body);
-
-    return res.status(201).json({
-      success: true,
-      message: "Category created successfully",
-      data: category,
-    });
+    return res.status(201).json(category);
   } catch (error: any) {
     console.error("Create category error:", error);
 
@@ -36,11 +31,7 @@ export async function createCategoryController(req: Request, res: Response) {
 export async function getCategoriesController(req: Request, res: Response) {
   try {
     const categories = await getCategories();
-
-    return res.status(200).json({
-      success: true,
-      data: categories,
-    });
+    return res.status(200).json(categories);
   } catch (error: any) {
     return res.status(400).json({
       success: false,
@@ -56,10 +47,7 @@ export async function getCategoryByIdController(req: Request, res: Response) {
   try {
     const category = await getCategoryById(req.params.id.toString());
 
-    return res.status(200).json({
-      success: true,
-      data: category,
-    });
+    return res.status(200).json(category);
   } catch (error: any) {
     return res.status(404).json({
       success: false,
@@ -75,11 +63,7 @@ export async function updateCategoryController(req: Request, res: Response) {
   try {
     const category = await updateCategory(req.params.id.toString(), req.body);
 
-    return res.status(200).json({
-      success: true,
-      message: "Category updated successfully",
-      data: category,
-    });
+    return res.status(200).json(category);
   } catch (error: any) {
     return res.status(400).json({
       success: false,

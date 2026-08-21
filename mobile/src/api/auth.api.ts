@@ -18,16 +18,10 @@ export interface LoginResponse {
   user: LoginUser;
 }
 
-export interface LoginResponseAll {
-  success: boolean;
-  message: string;
-  data: LoginResponse;
-}
-
 export const login = async (
   data: LoginRequest
-): Promise<LoginResponseAll> => {
-  const response = await axios.post<LoginResponseAll>(
+): Promise<LoginResponse> => {
+  const response = await axios.post<LoginResponse>(
     `${API_URL}/auth/login`,
     data
   );

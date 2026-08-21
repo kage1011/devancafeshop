@@ -13,11 +13,7 @@ export async function registerController(
 
     const user = await register(data);
 
-    res.status(201).json({
-      success: true,
-      message: "User created successfully",
-      data: user,
-    });
+    res.status(201).json(user);
   } catch (error) {
     next(error);
   }
@@ -33,11 +29,7 @@ export async function loginController(
 
     const result = await login(data);
 
-    res.json({
-      success: true,
-      message: "Login successful",
-      data: result,
-    });
+    res.json(result);
   } catch (error) {
     next(error);
   }
@@ -48,10 +40,7 @@ export async function meController(
   next: NextFunction
 ) {
   try {
-    res.json({
-      success: true,
-      data: req.user
-    });
+    res.json(req.user);
   } catch (error) {
     next(error);
   }

@@ -46,13 +46,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         username,
         password,
       });
-      const { accessToken, user } = response.data;
-      console.log('Login successful - user:', user, 'token:', accessToken);
+      const { accessToken, user } = response;
       await AsyncStorage.setItem('accessToken', accessToken);
       await AsyncStorage.setItem('user', JSON.stringify(user));
       setToken(accessToken);
       setUser(user);
-      console.log('Login successful - user:', user, 'token:', accessToken);
     } catch (error) {
       console.log('Login error:', error);
 
