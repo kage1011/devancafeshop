@@ -9,16 +9,7 @@ import AdminCategoryScreen from '../screens/Admin/CategoryScreen';
 // import OrderScreen from '../screens/admin/OrderScreen';
 // import UserScreen from '../screens/admin/UserScreen';
 // import BannerScreen from '../screens/admin/BannerScreen';
-
-export type AdminStackParamList = {
-  AdminHome: undefined;
-  AdminProduct: undefined;
-  AdminCategories: undefined;
-  AdminTables: undefined;
-  AdminOrders: undefined;
-  AdminUsers: undefined;
-  AdminBanners: undefined;
-};
+import { AdminStackParamList } from '../root/RootStackParamList';
 
 const Stack = createNativeStackNavigator<AdminStackParamList>();
 

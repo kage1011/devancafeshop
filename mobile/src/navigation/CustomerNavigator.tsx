@@ -1,26 +1,14 @@
 import React from 'react';
 
-import {
-  createNativeStackNavigator,
-} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeScreen from '../screens/Home/HomeScreen';
 import OrderScreen from '../screens/Order/OrderScreen';
+import { CustomerStackParamList } from '../root/RootStackParamList';
 // import CartScreen from '../screens/customer/CartScreen';
 // import ProfileScreen from '../screens/customer/ProfileScreen';
 
-export type CustomerStackParamList = {
-  Home: undefined;
-
-  Order: undefined;
-
-  Cart: undefined;
-
-  Profile: undefined;
-};
-
-const Stack =
-  createNativeStackNavigator<CustomerStackParamList>();
+const Stack = createNativeStackNavigator<CustomerStackParamList>();
 
 const CustomerNavigator = () => {
   return (
