@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/Home/HomeScreen';
 import OrderScreen from '../screens/Order/OrderScreen';
 import { CustomerStackParamList } from '../root/RootStackParamList';
+import CartScreen from '../screens/Cart/CartScreen';
 // import CartScreen from '../screens/customer/CartScreen';
 // import ProfileScreen from '../screens/customer/ProfileScreen';
 
@@ -33,14 +34,14 @@ const CustomerNavigator = () => {
           title: 'Order',
         }}
       />
-
-      {/* <Stack.Screen
+      <Stack.Screen
         name="Cart"
         component={CartScreen}
         options={{
           title: 'Giỏ hàng',
         }}
       />
+      {/*
 
       <Stack.Screen
         name="Profile"

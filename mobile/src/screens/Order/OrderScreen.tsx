@@ -12,19 +12,14 @@ import {
 
 import ProductCard from '../../components/order/ProductCard';
 
-import {
-  CartItem,
-  Product,
-} from '../../types/order.types';
+import { CartItem, Product } from '../../types/order.types';
 
-import {
-  categories,
-  products,
-} from '../../data/mockProducts';
+import { categories, products } from '../../data/mockProducts';
 
 const OrderScreen = () => {
-  const [selectedCategoryId, setSelectedCategoryId] =
-    useState<number>(categories[0].id);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<number>(
+    categories[0].id,
+  );
 
   const [cart, setCart] = useState<CartItem[]>([]);
 
@@ -33,8 +28,7 @@ const OrderScreen = () => {
    */
   const filteredProducts = useMemo(() => {
     return products.filter(
-      product =>
-        product.categoryId === selectedCategoryId,
+      product => product.categoryId === selectedCategoryId,
     );
   }, [selectedCategoryId]);
 
@@ -43,9 +37,7 @@ const OrderScreen = () => {
    */
   const handleAddProduct = (product: Product) => {
     setCart(currentCart => {
-      const existingProduct = currentCart.find(
-        item => item.id === product.id,
-      );
+      const existingProduct = currentCart.find(item => item.id === product.id);
 
       if (existingProduct) {
         return currentCart.map(item =>
@@ -72,49 +64,33 @@ const OrderScreen = () => {
    * Tổng số sản phẩm
    */
   const totalQuantity = useMemo(() => {
-    return cart.reduce(
-      (total, item) => total + item.quantity,
-      0,
-    );
+    return cart.reduce((total, item) => total + item.quantity, 0);
   }, [cart]);
 
   /**
    * Tổng tiền
    */
   const totalPrice = useMemo(() => {
-    return cart.reduce(
-      (total, item) =>
-        total + item.price * item.quantity,
-      0,
-    );
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   }, [cart]);
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-
         {/* HEADER */}
         <View style={styles.header}>
           <View>
-            <Text style={styles.title}>
-              Order
-            </Text>
+            <Text style={styles.title}>Order</Text>
 
-            <Text style={styles.subtitle}>
-              Chọn món bạn yêu thích
-            </Text>
+            <Text style={styles.subtitle}>Chọn món bạn yêu thích</Text>
           </View>
 
           <View style={styles.cartIcon}>
-            <Text style={styles.cartIconText}>
-              🛒
-            </Text>
+            <Text style={styles.cartIconText}>🛒</Text>
 
             {totalQuantity > 0 && (
               <View style={styles.cartBadge}>
-                <Text style={styles.cartBadgeText}>
-                  {totalQuantity}
-                </Text>
+                <Text style={styles.cartBadgeText}>{totalQuantity}</Text>
               </View>
             )}
           </View>
@@ -125,31 +101,24 @@ const OrderScreen = () => {
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={
-              styles.categoryContent
-            }
+            contentContainerStyle={styles.categoryContent}
           >
             {categories.map(category => {
-              const isSelected =
-                category.id === selectedCategoryId;
+              const isSelected = category.id === selectedCategoryId;
 
               return (
                 <TouchableOpacity
                   key={category.id}
                   style={[
                     styles.categoryItem,
-                    isSelected &&
-                      styles.categoryItemSelected,
+                    isSelected && styles.categoryItemSelected,
                   ]}
-                  onPress={() =>
-                    setSelectedCategoryId(category.id)
-                  }
+                  onPress={() => setSelectedCategoryId(category.id)}
                 >
                   <Text
                     style={[
                       styles.categoryText,
-                      isSelected &&
-                        styles.categoryTextSelected,
+                      isSelected && styles.categoryTextSelected,
                     ]}
                   >
                     {category.name}
@@ -163,28 +132,20 @@ const OrderScreen = () => {
         {/* PRODUCT LIST */}
         <FlatList
           data={filteredProducts}
-          keyExtractor={item =>
-            item.id.toString()
-          }
+          keyExtractor={item => item.id.toString()}
+          numColumns={2}
           renderItem={({ item }) => (
-            <ProductCard
-              product={item}
-              onAdd={handleAddProduct}
-            />
+            <ProductCard product={item} onAdd={handleAddProduct} />
           )}
-          contentContainerStyle={
-            styles.productList
-          }
+          contentContainerStyle={styles.productList}
+          columnWrapperStyle={styles.row}
           showsVerticalScrollIndicator={false}
         />
-
         {/* CART SUMMARY */}
         {cart.length > 0 && (
           <View style={styles.cartSummary}>
             <View>
-              <Text style={styles.cartSummaryTitle}>
-                {totalQuantity} món
-              </Text>
+              <Text style={styles.cartSummaryTitle}>{totalQuantity} món</Text>
 
               <Text style={styles.cartSummaryPrice}>
                 {totalPrice.toLocaleString('vi-VN')}đ
@@ -195,20 +156,15 @@ const OrderScreen = () => {
               style={styles.viewCartButton}
               onPress={() => {
                 // TODO:
-                // navigate('Cart')
+                navigation.navigate('Cart');
               }}
             >
-              <Text style={styles.viewCartText}>
-                Xem order
-              </Text>
+              <Text style={styles.viewCartText}>Xem order</Text>
 
-              <Text style={styles.arrow}>
-                →
-              </Text>
+              <Text style={styles.arrow}>→</Text>
             </TouchableOpacity>
           </View>
         )}
-
       </View>
     </SafeAreaView>
   );
@@ -314,11 +270,15 @@ const styles = StyleSheet.create({
   },
 
   productList: {
-    paddingHorizontal: 20,
-    paddingTop: 5,
-    paddingBottom: 100,
+    paddingHorizontal: 16,
+    paddingBottom: 20,
+    width: '50%',
   },
-
+  row: {
+    flex: 1,
+    justifyContent: 'space-between', // Đẩy 2 card ra 2 bên
+    marginBottom: 16, // Khoảng cách giữa các dòng
+  },
   cartSummary: {
     position: 'absolute',
     left: 16,
